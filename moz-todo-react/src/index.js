@@ -11,18 +11,11 @@ const DATA = [
   { id: "todo-2", name: "Repeat", completed: false },
 ];
 
-const DATA_FILTER = [
-  { id: "btn-0", name: "All", ariaPressed: true },
-  { id: "btn-1", name: "Active", ariaPressed: false },
-  { id: "btn-2", name: "Completed", ariaPressed: false },
-];
 
 root.render(
   <React.StrictMode>
     <App
-      subject="Clarice1"
       tasks={DATA}
-      filter={DATA_FILTER}
     />
   </React.StrictMode>
 );
