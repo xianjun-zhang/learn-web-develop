@@ -1,24 +1,42 @@
-import React from "react";
-import Form from "./components/Form";
+import React, { useState, useReducer } from "react";
+import AddTask from "./components/AddTask";
 import FilterButton from "./components/FilterButton";
-import Todo from "./components/Todo";
-import { useState } from "react";
-import { nanoid } from "nanoid";
+import TodoItem from "./components/TodoItem";
+import { TasksContext, TasksDispatchContext, TasksReducer } from "./components/TasksContext";
 
+const defaultTasks = [
+  { id: "todo-0", name: "Eat", completed: true },
+];
 
 
 function App(props) {
-  const [tasks, setTasks] = useState(props.tasks);
+  // Task Management Section
+  // This section handles the state management for tasks using a reducer,
+  // and defines functions for adding, toggling, deleting, and editing tasks.
+
+  // Use the tasksReducer to manage the tasks state
+  const initTasks = props && props.tasks ? props.tasks : defaultTasks;
+
+  const [tasks, dispatch] = useReducer(TasksReducer, initTasks);
+ 
+  
+  // Filter Management Section
+  // This section handles the state and logic for filtering tasks
+
+  // State to keep track of the current filter
   const [filter, setFilter] = useState("All");
 
+  // Object mapping filter names to their corresponding filter functions
   const FILTER_MAP = {
     All: () => true,
     Active: (task) => !task.completed,
     Completed: (task) => task.completed,
   };
 
+  // Array of filter names
   const FILTER_NAMES = Object.keys(FILTER_MAP);
 
+  // Create a list of FilterButton components
   const filterList = FILTER_NAMES.map((name) => (
     <FilterButton
       key={name}
@@ -29,79 +47,40 @@ function App(props) {
   ));
 
 
-  function addTaskFunction(name) {
-    if (name && name.trim() !== "") {
-      const newTask = { id: `todo-${nanoid()}`, name, completed: false };
-      setTasks([...tasks, newTask]);
-    }
-  }
-  
-  function toggleTaskCompleted(id) {
-    const updatedTasks = tasks.map((task) => {
-      // if this task has the same ID as the edited task
-      if (id === task.id) {
-        // use object spread to make a new object
-        // whose `completed` prop has been inverted
-        return { ...task, completed: !task.completed };
-      }
-      return task;
-    });
-    setTasks(updatedTasks);
-  }
-
-  function deleteTask(id) {
-    const remainingTasks = tasks.filter((task) => id !== task.id);
-    setTasks(remainingTasks);
-  }
-  
-  function editTask(id, newName) {
-    const editedTaskList = tasks.map((task) => {
-      // if this task has the same ID as the edited task
-      if (id === task.id) {
-        // Copy the task and update its name
-        return { ...task, name: newName };
-      }
-      // Return the original task if it's not the edited task
-      return task;
-    });
-    setTasks(editedTaskList);
-  }
-  
-
   const taskList = tasks
     .filter(FILTER_MAP[filter])
     .map((task) => (
-      <Todo
+      <TodoItem
         id={task.id}
         name={task.name}
         completed={task.completed}
         key={task.id}
-        toggleTaskCompleted={toggleTaskCompleted}
-        deleteTask={deleteTask}
-        editTask={editTask}
       />
     ));
 
   const tasksNoun = taskList.length !== 1 ? "tasks" : "task";
   const headingText = `${taskList.length} ${tasksNoun} remaining`;
 
-
   return (
-    <div className="todoapp stack-large">
-
-      <h1>TodoMatic</h1>
-      <Form addTask={addTaskFunction}/>
-      <div className="filters btn-group stack-exception">
-        {filterList}
-      </div>
-      <h2 id="list-heading">{headingText}</h2>
-      <ul
-        role="list"
-        className="todo-list stack-large stack-exception"
-        aria-labelledby="list-heading">
-        {taskList}
-      </ul>
-    </div>
+    <TasksContext.Provider value={tasks}>
+      <TasksDispatchContext.Provider value={dispatch}>
+        <div className="todoapp stack-large">
+          <h1>TodoMatic</h1>
+          <AddTask />
+          <div className="filters btn-group stack-exception">
+            {filterList}
+          </div>
+          <h2 id="list-heading">{headingText}</h2>
+          <ul
+            role="list"
+            className="todo-list stack-large stack-exception"
+            aria-labelledby="list-heading"
+          >
+            {taskList}
+          </ul>
+        </div>
+      </TasksDispatchContext.Provider>
+    </TasksContext.Provider>
   );
 }
 

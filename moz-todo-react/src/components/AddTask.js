@@ -1,19 +1,25 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { nanoid } from "nanoid";
+import { TasksDispatchContext } from "./TasksContext";
 
+function AddTask(props) {
+    const dispatch = useContext(TasksDispatchContext);
 
-
-function Form(props) {
     const [name, setName] = useState("");
 
-    function handleChange(e) {
+    function HandleChange(e) {
         setName(e.target.value);
     }
 
-    function handleSubmit(event) {
+    function AddTaskFunction(event) {
         event.preventDefault();
         if (name && name.trim() !== "") {
-            props.addTask(name);
+            dispatch({
+                type: 'add',
+                id: `todo-${nanoid()}`, // Generate a unique ID for the new task
+                name: name
+            });
             setName("");
         } else {
             alert("Error: Task can not be empty!");
@@ -21,7 +27,7 @@ function Form(props) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={AddTaskFunction}>
             <h2 className="label-wrapper">
                 <label htmlFor="new-todo-input" className="label__lg">
                     What needs to be done?
@@ -34,7 +40,7 @@ function Form(props) {
                 name="text"
                 autoComplete="off"
                 value={name}
-                onChange={handleChange}
+                onChange={HandleChange}
             />
             <button type="submit" className="btn btn__primary btn__lg">
                 Add
@@ -43,4 +49,4 @@ function Form(props) {
     );
 }
 
-export default Form;
+export default AddTask;
