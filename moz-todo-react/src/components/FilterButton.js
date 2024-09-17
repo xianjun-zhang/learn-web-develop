@@ -1,8 +1,10 @@
 import React from "react";
-
+import { createContext, useContext, useReducer } from 'react';
+import { TasksContext, TasksDispatchContext, TasksFilterContext } from './TasksContext';
 
 
 function FilterButton(props) {
+    const { name, isPressed, setFilter } = props;
     return (
       <button
         type="button"
@@ -15,6 +17,7 @@ function FilterButton(props) {
       </button>
     );
   }
+
   
   export default FilterButton;
   
