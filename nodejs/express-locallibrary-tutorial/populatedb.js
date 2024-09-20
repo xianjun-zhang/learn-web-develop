@@ -1,11 +1,14 @@
 #! /usr/bin/env node
 
+// Use command "node populatedb.js" to run the script for testing under local terminal
+
 console.log(
+
     'This script populates some test books, authors, genres and bookinstances to your database. Specified database as argument - e.g.: node populatedb "mongodb+srv://cooluser:coolpassword@cluster0.cojoign.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0"'
   );
   
   // Get arguments passed on command line
-  const userArgs = process.argv.slice(2);
+  // const userArgs = process.argv.slice(2);
   
   const Book = require("./models/book");
   const Author = require("./models/author");
@@ -24,7 +27,8 @@ console.log(
   // Example: userArgs = ["mongodb+srv://cooluser:coolpassword@cluster0.cojoign.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0"]
   // Example: userArgs = ["mongodb://127.0.0.1:27017/local_library"]
 
-  const mongoDB = userArgs[0];
+  // const mongoDB = userArgs[0];
+  const mongoDB = "mongodb://127.0.0.1:27017/local_library";
   
   main().catch((err) => console.log(err));
   
