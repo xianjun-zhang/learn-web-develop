@@ -1,0 +1,27 @@
+@url = http://localhost:3001/api
+@json = Content-Type: application/json
+
+### Test the root endpoint
+
+GET {{url}}
+
+### Test the register endpoint
+
+POST {{url}}/register
+{{json}}
+
+{
+    "username": "user1",
+    "password": "123456"
+}
+
+
+### Test the login endpoint
+
+POST {{url}}/login
+{{json}}
+
+{
+    "username": "user1",
+    "password": "123456"
+}
