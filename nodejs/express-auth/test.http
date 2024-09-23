@@ -11,10 +11,13 @@ POST {{url}}/register
 {{json}}
 
 {
-    "username": "user1",
+    "username": "user2",
     "password": "123456"
 }
 
+### Test the get all users endpoint
+
+GET {{url}}/users
 
 ### Test the login endpoint
 
@@ -22,6 +25,15 @@ POST {{url}}/login
 {{json}}
 
 {
-    "username": "user1",
+    "username": "user2",
     "password": "123456"
 }
+
+
+### Test the profile endpoint
+# This request fetches the user's profile
+# It requires authentication using a JWT token
+
+GET {{url}}/profile
+# The Authorization header includes the Bearer token for authentication
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmYwZWQ5NGMyMTMxODkxNWIxNWExNGEiLCJpYXQiOjE3MjcwNjk3OTh9.Eo0Hv0Hs7R1AmodqhEoTSYGqEMFMQCHjZLjLnIzGCZs
