@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:27017/express-auth', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -13,10 +9,14 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        set: (value) => {
+            return bcrypt.hashSync(value, 10);
+        }
     }
 });
 
 const User = mongoose.model('User', userSchema);
+
 
 module.exports = User;
