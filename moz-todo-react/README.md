@@ -1,10 +1,11 @@
 # 项目初始化
+```
 npx create-react-app your-app
 
 cd your-app
 
 npm start
-
+```
 
 # Getting Started with Create React App
 
