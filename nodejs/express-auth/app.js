@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 const express = require('express');
 const bcrypt = require('bcrypt');
@@ -7,22 +9,25 @@ const User = require('./models');
 
 const app = express();
 
-const localIP = "192.168.240.1";
-const mongoDB = `mongodb://${localIP}:27017/express-auth`;
+const mongoDB_uri = process.env.MONGODB_URI;
 
 /**
-       * TODO: Move this JWT secret to a .env file for better security
-       * 
-       * - The JWT secret is used to sign the token and should be kept confidential
-       * - Storing it in an environment variable prevents accidental exposure in version control
-       * - The fallback 'default-secret-key-if-env-not-set' is provided for development purposes
-       * - In production, always ensure a proper secret is set in the environment variables
-       * 
-       * IMPORTANT: 
-       * - Never use the default secret in a production environment
-       * - It's crucial to set a strong, unique secret for each deployment
-       */
-const JWT_SECRET = process.env.JWT_SECRET || 'default-secret-key-if-env-not-set-in-dev-mode';
+ * JWT secret for signing tokens
+ * 
+ * This secret is now properly set in the .env file for better security.
+ * The environment variable is used directly without a fallback,
+ * ensuring that a proper secret is always set.
+ * 
+ * IMPORTANT: 
+ * - Ensure that JWT_SECRET is set in the .env file before running the application
+ * - Keep the .env file secure and never commit it to version control
+ */
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+    console.error('JWT_SECRET is not set in the environment variables. Please set it in the .env file.');
+    process.exit(1);
+}
 
 /**
  * Authentication middleware function
@@ -71,7 +76,7 @@ async function connectToDatabase() {
     try {
         console.log("Connecting to MongoDB...");
         // Update the connection string if needed
-        await mongoose.connect(mongoDB, {
+        await mongoose.connect(mongoDB_uri, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             serverSelectionTimeoutMS: 5000 // Add a timeout
@@ -174,7 +179,7 @@ async function startServer() {
 
 
     // start the server and listen on port 3001
-    app.listen(3001, () => {
+    app.listen(3001,'0.0.0.0', () => {
       console.log('Server running at http://localhost:3001');
     });
     

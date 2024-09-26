@@ -11,7 +11,7 @@ POST {{url}}/register
 {{json}}
 
 {
-    "username": "user2",
+    "username": "user3",
     "password": "123456"
 }
 
@@ -36,4 +36,4 @@ POST {{url}}/login
 
 GET {{url}}/profile
 # The Authorization header includes the Bearer token for authentication
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmYwZWQ5NGMyMTMxODkxNWIxNWExNGEiLCJpYXQiOjE3MjcwNjk3OTh9.Eo0Hv0Hs7R1AmodqhEoTSYGqEMFMQCHjZLjLnIzGCZs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmYwZWQ5NGMyMTMxODkxNWIxNWExNGEiLCJpYXQiOjE3MjcxNDEzNTZ9.tnq7GeCE_t54BdWLzie8rBfDS6-BGoRqzWIwM2lWqxc
