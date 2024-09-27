@@ -1,3 +1,55 @@
+# 教程信息
+
+> Learn how to add advanced authentication to your NextJS App.
+
+- 教程来源： [Next Auth V5 - Advanced Guide (2024)](https://www.youtube.com/watch?v=1MTyCvS05V4&list=LL)
+
+- 用到的库和开源项目
+  - Source code: [https://dub.sh/N31z2Qp](https://dub.sh/N31z2Qp)
+  - Auth.js: [https://authjs.dev/](https://authjs.dev/)
+  - Middleware config: [https://dub.sh/Apr6dvD](https://dub.sh/Apr6dvD)
+  - Resend: [https://resend.com/](https://resend.com/)
+  - Node.js: [https://nodejs.org/en](https://nodejs.org/en)
+  - ShadcnUI: [https://ui.shadcn.com/](https://ui.shadcn.com/)
+  - Clerk: [https://dub.sh/SdVFxFU](https://dub.sh/SdVFxFU)
+
+
+- Key Features:
+  - 🔐 Next-auth v5 (Auth.js)
+  - 🚀 Next.js 14 with server actions
+  - 🔑 Credentials Provider
+  - 🌐 OAuth Provider (Social login with Google & GitHub)
+  - 🔒 Forgot password functionality
+  - ✉️ Email verification
+  - 📱 Two factor verification (2FA)
+  - 👥 User roles (Admin & User)
+  - 🔓 Login component (Opens in redirect or modal)
+  - 📝 Register component
+  - 🤔 Forgot password component
+  - ✅ Verification component
+  - ⚠️ Error component
+  - 🔘 Login button
+  - 🚪 Logout button
+  - 🚧 Role Gate
+  - 🔍 Exploring next.js middleware
+  - 📈 Extending & Exploring next-auth session
+  - 🔄 Exploring next-auth callbacks
+  - 👤 useCurrentUser hook
+  - 🛂 useRole hook
+  - 🧑 currentUser utility
+  - 👮 currentRole utility
+  - 🖥️ Example with server component
+  - 💻 Example with client component
+  - 👑 Render content for admins using RoleGate component
+  - 🛡️ Protect API Routes for admins only
+  - 🔐 Protect Server Actions for admins only
+  - 📧 Change email with new verification in Settings page
+  - 🔑 Change password with old password confirmation in Settings page
+  - 🔔 Enable/disable two-factor auth in Settings page
+  - 🔄 Change user role in Settings page (for development purposes only)
+
+
+
 # 项目初始化 (手动)
 
 ## 环境准备
@@ -34,6 +86,17 @@ npm install shadcn-ui@latest init
 ✔ Which color would you like to use as the base color? › Slate
 ✔ Would you like to use CSS variables for theming? … no / yes
 ```
+
+
+## Add shadcn-ui button
+
+> 详见： [shadcn/ui Button](https://ui.shadcn.com/docs/components/button)
+
+```bash
+npx shadcn@latest add button
+```
+
+
 
 
 # 项目介绍 (自动生成)
