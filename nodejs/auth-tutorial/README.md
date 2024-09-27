@@ -100,6 +100,12 @@ npx shadcn@latest add button
 ## NextJS routing and layout learning
 > 详见： [NextJS routing and file conventions](https://nextjs.org/docs/app/building-your-application/routing#file-conventions)
 
+1. NextJS默认用app下面的目录作为网站router结构，每个目录下方用page.tsx作为默认页面
+2. 每个目录下面的layout.tsx 应用到所有当前目录与子目录，作为基础的layout， 内部用` { children }`来带入各自的页面样式
+3. 如果不想所有的子页面访问url必须带父目录，可以用`()`将父目录包裹， 这样所有子页面访问url就不需要带父目录了。比如：`/auth/login`, `/auth/register`, 用把文件夹名字`auth`包裹在()里变成`(auth)`， 这样访问的时候只需要 `/login`, `/register`即可
+4. 由于app下面的目录默认作为router， 在web url可访问，有些目录我们只是作为内部使用，不想错误的对外暴露，可以用`_`来放在目录前，比如`_components`， 这样外部url就无法访问，显示404错误。同时， 在app目录下， 可以自由调用`components`目录下的组件。
+
+
 
 # 项目介绍 (自动生成)
 
