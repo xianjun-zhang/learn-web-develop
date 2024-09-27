@@ -97,6 +97,8 @@ npx shadcn@latest add button
 ```
 
 
+## NextJS routing and layout learning
+> 详见： [NextJS routing and file conventions](https://nextjs.org/docs/app/building-your-application/routing#file-conventions)
 
 
 # 项目介绍 (自动生成)
