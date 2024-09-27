@@ -1,15 +1,18 @@
 # 项目初始化 (手动)
 
+## 环境准备
 1. 确保node.js version在18以后
 
 ```node -v ```
 
 2. 创建项目: 
 
+> 详见： [shadcn/ui install](https://ui.shadcn.com/docs/installation/next)
+
 ```npx create-next-app@latest auth-tutorial```
 
 按顺序选择:
-```
+```bash
 Would you like to use TypeScript? ...  Yes
 Would you like to use ESLint? ...  Yes
 Would you like to use Tailwind CSS? ...  Yes
@@ -18,6 +21,19 @@ Would you like to use App Router?(recommended)...  Yes
 Would you like to customize the default import alias(@/*)? >  No
 ```
 
+## 添加shadcn-ui
+
+```bash
+npm install shadcn-ui@latest init
+``` 
+
+选择:
+
+```bash
+✔ Which style would you like to use? › New York
+✔ Which color would you like to use as the base color? › Slate
+✔ Would you like to use CSS variables for theming? … no / yes
+```
 
 
 # 项目介绍 (自动生成)
