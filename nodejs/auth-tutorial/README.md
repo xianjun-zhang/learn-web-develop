@@ -75,6 +75,10 @@ Would you like to customize the default import alias(@/*)? >  No
 
 ## 添加shadcn-ui
 
+> 详见： [shadcn/ui install](https://ui.shadcn.com/docs/installation/next)
+
+All shadcn-ui components are installed in path: `./components/ui`, all files are named as `[component-name].tsx`, and these files are generated automatically.
+
 ```bash
 npm install shadcn-ui@latest init
 ``` 
@@ -88,12 +92,32 @@ npm install shadcn-ui@latest init
 ```
 
 
-## Add shadcn-ui button
+### Add shadcn-ui button
 
 > 详见： [shadcn/ui Button](https://ui.shadcn.com/docs/components/button)
 
+
 ```bash
 npx shadcn@latest add button
+```
+
+### Add shadcn-ui card
+
+> 详见： [shadcn/ui Card](https://ui.shadcn.com/docs/components/card)
+
+```bash
+npx shadcn@latest add card
+```
+
+
+## Social Login
+
+### Social Icon
+
+> Used in socal.tsx, for social media login
+
+```bash
+npm i react-icons
 ```
 
 
