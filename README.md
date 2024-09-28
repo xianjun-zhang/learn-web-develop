@@ -8,3 +8,5 @@ Folder: /moz-todo-react
 # NodeJS
 Folder: /nodejs
 
+# Full stack engineer技术栈
+![Full stack engineer技术栈](https://github.com/user-attachments/assets/5600d68b-3492-4d7b-afce-d451ef3c8e48)
