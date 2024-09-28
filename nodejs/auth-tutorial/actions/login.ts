@@ -2,14 +2,11 @@
 
 import { z } from "zod";
 
-import { loginSchema } from "@/schemas";
+import { LoginSchema } from "@/schemas";
 
-export const login = async (values: z.infer<typeof loginSchema>) => {
-    // Simulating a delay to test login-form "pending" state
-    // await new Promise(resolve => setTimeout(resolve, 2000));
-    
+export const login = async (values: z.infer<typeof LoginSchema>) => {
     // Validate the input fields using the loginSchema
-    const validatedFields = loginSchema.safeParse(values);
+    const validatedFields = LoginSchema.safeParse(values);
 
     // If validation fails, return an error message
     if (!validatedFields.success) {
