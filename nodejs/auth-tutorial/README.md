@@ -109,6 +109,26 @@ npx shadcn@latest add button
 npx shadcn@latest add card
 ```
 
+### Add shadcn-ui form
+
+> 详见： [shadcn/ui Form](https://ui.shadcn.com/docs/components/form)
+
+```bash
+npx shadcn@latest add form
+```
+
+
+### Add shadcn-ui input
+
+> 详见： [shadcn/ui Input](https://ui.shadcn.com/docs/components/input)
+
+```bash
+npx shadcn@latest add input
+```
+
+
+
+
 
 ## Social Login
 
