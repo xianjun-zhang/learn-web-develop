@@ -21,6 +21,18 @@ Would you like to use App Router?(recommended)...  Yes
 Would you like to customize the default import alias(@/*)? >  No
 ```
 
+# Use Clerk
+
+按照官网的指引，安装 Clerk 的依赖
+
+```bash
+npm install @clerk/nextjs
+```
+
+然后按照官网的步骤，配置环境变量，更新代码
+
+
+
 
 
 # 项目介绍 (自动生成)
