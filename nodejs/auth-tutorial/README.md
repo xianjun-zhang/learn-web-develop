@@ -141,6 +141,50 @@ npm i react-icons
 ```
 
 
+## 数据库操作
+
+### 安装Prisma到dev环境中
+
+```bash
+npm install -D prisma
+```
+安装完成后，可以看到package.json `"dependencies` 中多了`prisma`的依赖
+
+### 安装Prisma Client
+
+After installing Prisma, you need to add Prisma Client to your project:
+
+```bash
+npm install @prisma/client
+```
+安装完成后，可以看到package.json `"dependencies` 中多了`@prisma/client`的依赖
+
+### Initialize Prisma
+
+To set up Prisma in your project, run the following command:
+
+This command will create a new Prisma schema file and generate a `.env` file for your database connection string (You can add .env to .gitignore):
+
+```bash
+npx prisma init
+```
+
+这个命令成功后， 会生成`prisma`目录， 里面有`schema.prisma`文件， 和`.env`文件。同时，命令行会输出next step的提示， 比如：
+
+```bash
+Next steps:
+1. Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
+2. Set the provider of the datasource block in schema.prisma to match your database: postgresql, mysql, sqlite, sqlserver, mongodb or cockroachdb.
+3. Run prisma db pull to turn your database schema into a Prisma schema.
+4. Run prisma generate to generate the Prisma Client. You can then start querying your database.
+5. Tip: Explore how you can extend the ORM with scalable connection pooling, global caching, and real-time database events. Read: https://pris.ly/cli/beyond-orm
+```
+
+
+
+
+
+
 ## NextJS routing and layout learning
 > 详见： [NextJS routing and file conventions](https://nextjs.org/docs/app/building-your-application/routing#file-conventions)
 
