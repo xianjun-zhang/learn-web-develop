@@ -1,13 +1,10 @@
 import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
+  ClerkProvider
 } from '@clerk/nextjs'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { Metadata } from 'next'
+import SignInButtonsFlex from '@/app/_components/SignInButtonsFlex'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,12 +22,9 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          <div className="fixed top-4 right-4 z-50">
+            <SignInButtonsFlex />
+          </div>
           {children}
         </body>
       </html>
